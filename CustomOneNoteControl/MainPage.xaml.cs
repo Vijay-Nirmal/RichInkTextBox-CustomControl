@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.Input.Inking;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,7 +31,11 @@ namespace CustomOneNoteControl
         public MainPage()
         {
             this.InitializeComponent();
-            ChangeButton.Click += (s, e) => CustomInkControl.ChangeMode();
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomInkControl.ChangeMode();
         }
     }
 }

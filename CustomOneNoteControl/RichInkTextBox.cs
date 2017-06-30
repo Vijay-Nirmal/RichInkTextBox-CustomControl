@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.UI.Core;
+using Windows.UI.Input.Inking;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -21,15 +23,26 @@ namespace CustomOneNoteControl
             this.DefaultStyleKey = typeof(RichInkTextBox);
         }
 
-        InkCanvas PATH_INK_CANVAS;
-        RichEditBox PATH_RICH_EDIT_BOX;
-
         protected override void OnApplyTemplate()
         {
-            PATH_INK_CANVAS = GetTemplateChild<InkCanvas>("PATH_INK_CANVAS");
-            PATH_INK_CANVAS.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen;
+            InkCanvas = GetTemplateChild<InkCanvas>("PATH_INK_CANVAS");
+            InkCanvas.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen;
+            InkCanvas.InkPresenter.StrokeInput.StrokeEnded += StrokeInput_StrokeEndedAsync;
 
-            PATH_RICH_EDIT_BOX = GetTemplateChild<RichEditBox>("PATH_RICH_EDIT_BOX");
+            RichEditBox = GetTemplateChild<RichEditBox>("PATH_RICH_EDIT_BOX");
+        }
+
+        private async void StrokeInput_StrokeEndedAsync(InkStrokeInput sender, PointerEventArgs args)
+        {
+            await Task.Delay(100);
+
+            var XBound = InkCanvas.InkPresenter.StrokeContainer.BoundingRect.Bottom;
+            if (XBound > InkCanvas.ActualHeight - 500)
+                InkCanvas.Height = XBound + 500;
+
+            var YBound = InkCanvas.InkPresenter.StrokeContainer.BoundingRect.Right;
+            if (YBound > InkCanvas.ActualWidth - 500)
+                InkCanvas.Width = YBound + 500;
         }
 
         T GetTemplateChild<T>(string elementName) where T : DependencyObject
@@ -42,33 +55,38 @@ namespace CustomOneNoteControl
 
         public void ChangeMode()
         {
-            PATH_RICH_EDIT_BOX.IsEnabled = !PATH_RICH_EDIT_BOX.IsEnabled;
-            SetValue(ModeProperty, PATH_RICH_EDIT_BOX.IsEnabled ? Modes.TextEditing : Modes.Inking);
+            RichEditBox.IsEnabled = !RichEditBox.IsEnabled;
+            SetValue(ModeProperty, RichEditBox.IsEnabled ? Modes.TextEditing : Modes.Inking);
         }
+
+        public RichEditBox RichEditBox
+        {
+            get { return (RichEditBox)GetValue(RichEditBoxProperty); }
+            set { SetValue(RichEditBoxProperty, value); }
+        }
+        
+        public static readonly DependencyProperty RichEditBoxProperty =
+            DependencyProperty.Register("RichEditBox", typeof(RichEditBox), typeof(RichInkTextBox), new PropertyMetadata(null));
 
         public InkCanvas InkCanvas
         {
             get => (InkCanvas)GetValue(InkCanvasProperty);
             private set => SetValue(InkCanvasProperty, value);
         }
-
-        // Using a DependencyProperty as the backing store for InkCanvas.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty InkCanvasProperty =
             DependencyProperty.Register("InkCanvas", typeof(InkCanvas), typeof(RichInkTextBox), new PropertyMetadata(null));
-
-
 
         public Modes Mode
         {
             get { return (Modes)GetValue(ModeProperty); }
             set
             {
-                PATH_RICH_EDIT_BOX.IsEnabled = (value == Modes.TextEditing) ? true : false;
+                RichEditBox.IsEnabled = (value == Modes.TextEditing) ? true : false;
                 SetValue(ModeProperty, value);
             }
         }
 
-        // Using a DependencyProperty as the backing store for Mode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ModeProperty =
             DependencyProperty.Register("Mode", typeof(Modes), typeof(RichInkTextBox), new PropertyMetadata(Modes.TextEditing));
 
@@ -78,11 +96,10 @@ namespace CustomOneNoteControl
             set
             {
                 SetValue(InputDeviceTypesProperty, value);
-                PATH_INK_CANVAS.InkPresenter.InputDeviceTypes = value;
+                InkCanvas.InkPresenter.InputDeviceTypes = value;
             }
         }
-
-        // Using a DependencyProperty as the backing store for InputDeviceTypes.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty InputDeviceTypesProperty =
             DependencyProperty.Register("InputDeviceTypes", typeof(CoreInputDeviceTypes), typeof(RichInkTextBox), new PropertyMetadata(CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen));
 

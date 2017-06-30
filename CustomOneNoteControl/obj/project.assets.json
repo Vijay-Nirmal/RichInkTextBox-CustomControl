@@ -22015,10 +22015,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\Windows 10 Developement\\Template\\CustomOneNoteControl\\CustomOneNoteControl\\CustomOneNoteControl.csproj",
+      "projectUniqueName": "D:\\Project\\Windows 10 Developement\\Template\\CustomOneNoteControl - Copy\\CustomOneNoteControl\\CustomOneNoteControl.csproj",
       "projectName": "CustomOneNoteControl",
-      "projectPath": "D:\\Project\\Windows 10 Developement\\Template\\CustomOneNoteControl\\CustomOneNoteControl\\CustomOneNoteControl.csproj",
-      "outputPath": "D:\\Project\\Windows 10 Developement\\Template\\CustomOneNoteControl\\CustomOneNoteControl\\obj\\",
+      "projectPath": "D:\\Project\\Windows 10 Developement\\Template\\CustomOneNoteControl - Copy\\CustomOneNoteControl\\CustomOneNoteControl.csproj",
+      "outputPath": "D:\\Project\\Windows 10 Developement\\Template\\CustomOneNoteControl - Copy\\CustomOneNoteControl\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "uap10.0.14393"

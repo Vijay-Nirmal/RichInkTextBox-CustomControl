@@ -1,1 +1,1 @@
-D:\Project\Windows 10 Developement\Template\CustomOneNoteControl\CustomOneNoteControl\CustomOneNoteControl.csproj;x86
+D:\Project\Windows 10 Developement\Template\CustomOneNoteControl - Copy\CustomOneNoteControl\CustomOneNoteControl.csproj;x86

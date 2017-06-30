@@ -7,14 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel x:ConnectionId='2' Name="MainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:ConnectionId='2' Name="MainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <InkToolbar x:ConnectionId='4' Grid.Row="0"                                                                   />
-            <Button x:ConnectionId='5' Name="ChangeButton" Content="Change"/>
+            <InkToolbar x:ConnectionId='4'                                                                   />
+            <Button x:ConnectionId='5' Name="ChangeButton" Content="Change"                           />
         </StackPanel>
 
-        <local:RichInkTextBox x:ConnectionId='3' x:Name="CustomInkControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        
-    </StackPanel>
+        <Grid Grid.Row="1">
+            <local:RichInkTextBox x:ConnectionId='3' x:Name="CustomInkControl"/>
+        </Grid>
+
+
+    </Grid>
 </Page>
 

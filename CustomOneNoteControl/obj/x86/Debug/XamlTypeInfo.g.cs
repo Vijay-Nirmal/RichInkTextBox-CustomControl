@@ -132,31 +132,33 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[11];
+            _typeNameTable = new string[12];
             _typeNameTable[0] = "CustomOneNoteControl.RichInkTextBox";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Control";
-            _typeNameTable[2] = "Windows.UI.Xaml.Controls.InkCanvas";
-            _typeNameTable[3] = "CustomOneNoteControl.Modes";
-            _typeNameTable[4] = "System.Enum";
-            _typeNameTable[5] = "System.ValueType";
-            _typeNameTable[6] = "Object";
-            _typeNameTable[7] = "Windows.UI.Core.CoreInputDeviceTypes";
-            _typeNameTable[8] = "CustomOneNoteControl.MainPage";
-            _typeNameTable[9] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[10] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[2] = "Windows.UI.Xaml.Controls.RichEditBox";
+            _typeNameTable[3] = "Windows.UI.Xaml.Controls.InkCanvas";
+            _typeNameTable[4] = "CustomOneNoteControl.Modes";
+            _typeNameTable[5] = "System.Enum";
+            _typeNameTable[6] = "System.ValueType";
+            _typeNameTable[7] = "Object";
+            _typeNameTable[8] = "Windows.UI.Core.CoreInputDeviceTypes";
+            _typeNameTable[9] = "CustomOneNoteControl.MainPage";
+            _typeNameTable[10] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[11] = "Windows.UI.Xaml.Controls.UserControl";
 
-            _typeTable = new global::System.Type[11];
+            _typeTable = new global::System.Type[12];
             _typeTable[0] = typeof(global::CustomOneNoteControl.RichInkTextBox);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Control);
-            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.InkCanvas);
-            _typeTable[3] = typeof(global::CustomOneNoteControl.Modes);
-            _typeTable[4] = typeof(global::System.Enum);
-            _typeTable[5] = typeof(global::System.ValueType);
-            _typeTable[6] = typeof(global::System.Object);
-            _typeTable[7] = typeof(global::Windows.UI.Core.CoreInputDeviceTypes);
-            _typeTable[8] = typeof(global::CustomOneNoteControl.MainPage);
-            _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.RichEditBox);
+            _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.InkCanvas);
+            _typeTable[4] = typeof(global::CustomOneNoteControl.Modes);
+            _typeTable[5] = typeof(global::System.Enum);
+            _typeTable[6] = typeof(global::System.ValueType);
+            _typeTable[7] = typeof(global::System.Object);
+            _typeTable[8] = typeof(global::Windows.UI.Core.CoreInputDeviceTypes);
+            _typeTable[9] = typeof(global::CustomOneNoteControl.MainPage);
+            _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -192,7 +194,7 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
         }
 
         private object Activate_0_RichInkTextBox() { return new global::CustomOneNoteControl.RichInkTextBox(); }
-        private object Activate_8_MainPage() { return new global::CustomOneNoteControl.MainPage(); }
+        private object Activate_9_MainPage() { return new global::CustomOneNoteControl.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -207,6 +209,7 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
             case 0:   //  CustomOneNoteControl.RichInkTextBox
                 userType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
                 userType.Activator = Activate_0_RichInkTextBox;
+                userType.AddMemberName("RichEditBox");
                 userType.AddMemberName("InkCanvas");
                 userType.AddMemberName("Mode");
                 userType.AddMemberName("InputDeviceTypes");
@@ -218,11 +221,15 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
                 xamlType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  Windows.UI.Xaml.Controls.InkCanvas
+            case 2:   //  Windows.UI.Xaml.Controls.RichEditBox
                 xamlType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  CustomOneNoteControl.Modes
+            case 3:   //  Windows.UI.Xaml.Controls.InkCanvas
+                xamlType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 4:   //  CustomOneNoteControl.Modes
                 userType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Inking", global::CustomOneNoteControl.Modes.Inking);
                 userType.AddEnumValue("TextEditing", global::CustomOneNoteControl.Modes.TextEditing);
@@ -230,21 +237,21 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 4:   //  System.Enum
+            case 5:   //  System.Enum
                 userType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 5:   //  System.ValueType
+            case 6:   //  System.ValueType
                 userType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 6:   //  Object
+            case 7:   //  Object
                 xamlType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 7:   //  Windows.UI.Core.CoreInputDeviceTypes
+            case 8:   //  Windows.UI.Core.CoreInputDeviceTypes
                 userType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("None", global::Windows.UI.Core.CoreInputDeviceTypes.None);
                 userType.AddEnumValue("Touch", global::Windows.UI.Core.CoreInputDeviceTypes.Touch);
@@ -253,18 +260,18 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 8:   //  CustomOneNoteControl.MainPage
+            case 9:   //  CustomOneNoteControl.MainPage
                 userType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_MainPage;
+                userType.Activator = Activate_9_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Windows.UI.Xaml.Controls.Page
+            case 10:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  Windows.UI.Xaml.Controls.UserControl
+            case 11:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -272,27 +279,37 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
         }
 
 
-        private object get_0_RichInkTextBox_InkCanvas(object instance)
+        private object get_0_RichInkTextBox_RichEditBox(object instance)
+        {
+            var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
+            return that.RichEditBox;
+        }
+        private void set_0_RichInkTextBox_RichEditBox(object instance, object Value)
+        {
+            var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
+            that.RichEditBox = (global::Windows.UI.Xaml.Controls.RichEditBox)Value;
+        }
+        private object get_1_RichInkTextBox_InkCanvas(object instance)
         {
             var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
             return that.InkCanvas;
         }
-        private object get_1_RichInkTextBox_Mode(object instance)
+        private object get_2_RichInkTextBox_Mode(object instance)
         {
             var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
             return that.Mode;
         }
-        private void set_1_RichInkTextBox_Mode(object instance, object Value)
+        private void set_2_RichInkTextBox_Mode(object instance, object Value)
         {
             var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
             that.Mode = (global::CustomOneNoteControl.Modes)Value;
         }
-        private object get_2_RichInkTextBox_InputDeviceTypes(object instance)
+        private object get_3_RichInkTextBox_InputDeviceTypes(object instance)
         {
             var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
             return that.InputDeviceTypes;
         }
-        private void set_2_RichInkTextBox_InputDeviceTypes(object instance, object Value)
+        private void set_3_RichInkTextBox_InputDeviceTypes(object instance, object Value)
         {
             var that = (global::CustomOneNoteControl.RichInkTextBox)instance;
             that.InputDeviceTypes = (global::Windows.UI.Core.CoreInputDeviceTypes)Value;
@@ -305,26 +322,33 @@ namespace CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo
 
             switch (longMemberName)
             {
+            case "CustomOneNoteControl.RichInkTextBox.RichEditBox":
+                userType = (global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CustomOneNoteControl.RichInkTextBox");
+                xamlMember = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlMember(this, "RichEditBox", "Windows.UI.Xaml.Controls.RichEditBox");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_0_RichInkTextBox_RichEditBox;
+                xamlMember.Setter = set_0_RichInkTextBox_RichEditBox;
+                break;
             case "CustomOneNoteControl.RichInkTextBox.InkCanvas":
                 userType = (global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CustomOneNoteControl.RichInkTextBox");
                 xamlMember = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlMember(this, "InkCanvas", "Windows.UI.Xaml.Controls.InkCanvas");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_0_RichInkTextBox_InkCanvas;
+                xamlMember.Getter = get_1_RichInkTextBox_InkCanvas;
                 xamlMember.SetIsReadOnly();
                 break;
             case "CustomOneNoteControl.RichInkTextBox.Mode":
                 userType = (global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CustomOneNoteControl.RichInkTextBox");
                 xamlMember = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlMember(this, "Mode", "CustomOneNoteControl.Modes");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_1_RichInkTextBox_Mode;
-                xamlMember.Setter = set_1_RichInkTextBox_Mode;
+                xamlMember.Getter = get_2_RichInkTextBox_Mode;
+                xamlMember.Setter = set_2_RichInkTextBox_Mode;
                 break;
             case "CustomOneNoteControl.RichInkTextBox.InputDeviceTypes":
                 userType = (global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlUserType)GetXamlTypeByName("CustomOneNoteControl.RichInkTextBox");
                 xamlMember = new global::CustomOneNoteControl.CustomOneNoteControl_XamlTypeInfo.XamlMember(this, "InputDeviceTypes", "Windows.UI.Core.CoreInputDeviceTypes");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_2_RichInkTextBox_InputDeviceTypes;
-                xamlMember.Setter = set_2_RichInkTextBox_InputDeviceTypes;
+                xamlMember.Getter = get_3_RichInkTextBox_InputDeviceTypes;
+                xamlMember.Setter = set_3_RichInkTextBox_InputDeviceTypes;
                 break;
             }
             return xamlMember;

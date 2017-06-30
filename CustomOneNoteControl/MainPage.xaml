@@ -7,13 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Name="MainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="MainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <InkToolbar Grid.Row="0" TargetInkCanvas="{x:Bind CustomInkControl.InkCanvas, Mode=OneWay}"/>
-            <Button Name="ChangeButton" Content="Change"/>
+            <InkToolbar TargetInkCanvas="{x:Bind CustomInkControl.InkCanvas, Mode=OneWay}"/>
+            <Button Name="ChangeButton" Content="Change" Click="ChangeButton_Click"/>
         </StackPanel>
 
-        <local:RichInkTextBox x:Name="CustomInkControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        
-    </StackPanel>
+        <Grid Grid.Row="1">
+            <local:RichInkTextBox x:Name="CustomInkControl"/>
+        </Grid>
+
+
+    </Grid>
 </Page>
